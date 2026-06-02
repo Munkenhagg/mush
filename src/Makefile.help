@@ -1,0 +1,10 @@
+all: print_help
+
+print_help:
+	@printf 'Mush Makefile help message\n'
+	@printf 'To build the whole mush binary: you can simply do just make or make all\n'
+	@printf 'clean: removes built object files from build/ and fully built binaries from arch/CURRENT_ARCH/out/\n'
+	@printf 'install: installs mush into bin. you can set where to install it by running for exammple make SYSBIN="/sbin" that would install it into /sbin instead of the standard /usr/bin\n'
+	@printf 'link: not meant to be ran alone unless everything it needs is created by the Makefile. links all the objects created against main/mush.c\n'
+	@printf 'strip: same as link, but strips $$OUT/mush.unstripped and outputs a stripped binary\n'
+	@printf 'Single files: should not be made. making only for example setvar will not build the full program. useful only when compiling singular files automatically instead of manually running cc commands\n'
