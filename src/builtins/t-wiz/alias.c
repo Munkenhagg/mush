@@ -1,8 +1,8 @@
 #include <mush.h>
 
 void terminal_wiz_alias() {
-	setalias("cls", "clear");
-	setalias("mkcd", "mkdir -p $@ && cd $@");
-	setalias("make", "make $@ || cmake $@");
-	setalias("mkdir", "mkdir -p $@");
+	setali("cls", "clear");
+	setali("mkcd", "mkdir -p $@ && cd $@");
+	setali("make", "extern make $@ || extern cmake $@");
+	setali("mkdir", "mkdir -p $@");
 }

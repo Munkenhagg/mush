@@ -4,6 +4,7 @@ else
 	printf 'Only use this script when make is not accessible. exiting. pass -f/--force to run anyways\n'
 	exit 1
 fi
+printf 'WARNING: this script is outdated and will likely not work. please use the Makefile'
 CC="gcc"
 LD="ld"
 CFLAGS="-Wall -Wextra"

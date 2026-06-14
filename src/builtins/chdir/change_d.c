@@ -1,7 +1,8 @@
 #include <mush.h>
 #include <unistd.h>
+#include <stdio.h>
 
-int cd(const char *path) {
+int chdir(const char *path) {
 	if (chdir(path)) {
 		return 0;
 	} else {

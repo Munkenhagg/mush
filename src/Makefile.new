@@ -1,0 +1,19 @@
+CC = gcc
+LD = ld
+STRIP = strip
+CFLAGS = -O2 -march=native -Wall -Wextra
+INCLUDE = -Iinclude
+OBJCFLAGS = -c
+ARCH = x86_64
+OUT = arch/$(ARCH)/out
+SYSBIN = /usr/bin
+
+MEM_S = setvar.c getvar.c setalias.c
+SH_S = exec_cmd interactive_shell.c
+
+SRC = $(addprefix memory/,$(MEM_S)) $(addprefix shell/,$(SH_S) main/mush.c
+
+all: print_progress
+
+print_progress:
+	@printf 'new makefile in progress, should not be used.\n'
