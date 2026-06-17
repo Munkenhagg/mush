@@ -13,7 +13,10 @@ SH := exec_cmd interactive_sh default_vars tokenizer getbuiltin log_hist
 DIRS := $(BUILD) $(OUT)
 BUILTINS := chdir/change_d exec/exec extern/extern_cmd exit/exit_iact_sh source/source pwd/pwd
 MISC := strjoin
-ALL_OBJS = build/setalias.o build/getalias.o build/setvar.o build/getvar.o build/exec_cmd.o build/interactive_sh.o build/exec.o build/default_vars.o build/extern_cmd.o build/change_d.o build/exit_iact_sh.o build/getbuiltin.o build/tokenizer.o build/strjoin.o build/source.o build/log_hist.o build/pwd.o
+ALL_OBJS_TMP := $(addprefix build/,$(MEM)) $(addprefix build/,$(SH)) $(addprefix build/,$(notdir $(BUILTINS))) $(addprefix build/,$(MISC))
+ALL_OBJS := $(addsuffix .o, $(ALL_OBJS_TMP))
+
+# ALL_OBJS = build/setalias.o build/getalias.o build/setvar.o build/getvar.o build/exec_cmd.o build/interactive_sh.o build/exec.o build/default_vars.o build/extern_cmd.o build/change_d.o build/exit_iact_sh.o build/getbuiltin.o build/tokenizer.o build/strjoin.o build/source.o build/log_hist.o build/pwd.o
 ALL_OUTS = $(OUT)/mush $(OUT)/mush.unstripped
 ALL_SF = $(MEM) $(SH) $(BUILTINS) $(MISC)
 
@@ -42,6 +45,7 @@ $(MISC):
 
 link: $(ALL_SF)
 	@printf 'LINK\t\t%s\n' "$(OUT)/mush.unstripped"
+	@printf "ALL_OBJS: %s\n" "$(ALL_OBJS)"
 	@$(CC) $(ALL_OBJS) $(INCLUDE) main/mush.c -o $(OUT)/mush.unstripped
 
 strip:
@@ -49,8 +53,8 @@ strip:
 	@$(STRIP) $(OUT)/mush.unstripped -o $(OUT)/mush || $(MAKE) link
 
 clean:
-	@printf 'DEL\t\t%s\n' "$(ALL_OBJS)$(EXTRA_OBJS)$(ALL_OUTS)"
-	@rm -rf $(ALL_OBJS) $(EXTRA_OBJS) $(ALL_OUTS)
+	@printf 'DEL\t\t%s\n' "$(ALL_OBJS) $(ALL_OUTS)"
+	@rm -rf $(ALL_OBJS) $(ALL_OUTS)
 
 run:
 	-@exec $(OUT)/mush || exec $(OUT)/mush.unstripped
