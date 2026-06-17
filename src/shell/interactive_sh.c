@@ -29,7 +29,7 @@ int iactive_shell(void) {
 		if (!fgets(cmdbuf, sizeof(cmdbuf), stdin)) {
 			break;
 		}
-		if (cmdbuf[0] == NULL || cmdbuf == NULL) {
+		if (cmdbuf[0] == '\0') {
 			continue;
 		}
 		cmdbuf[strcspn(cmdbuf, "\n")] = 0;
