@@ -29,6 +29,9 @@ int iactive_shell(void) {
 		if (!fgets(cmdbuf, sizeof(cmdbuf), stdin)) {
 			break;
 		}
+		if (cmdbuf[0] == NULL || cmdbuf == NULL) {
+			continue;
+		}
 		cmdbuf[strcspn(cmdbuf, "\n")] = 0;
 		char *tokbuf[512];
 		tokenize(cmdbuf, tokbuf);
