@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int chdir(const char *path) {
+int mush_chdir(const char *path) {
 	if (chdir(path)) {
 		return 0;
 	} else {

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void setalias(const char* keyw, const char *eq) {
+void setali(const char* keyw, const char *eq) {
 	for (int i=0;i<alias_c;i++) {
 		if (strcmp(global_aliases[i].keyw,keyw) == 0) {
 			strncpy(global_aliases[i].eq,eq,MAX_VAR_VAL_SZ);
