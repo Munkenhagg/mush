@@ -5,7 +5,7 @@
 
 int mush_chdir(const char *path) {
 	if (chdir(path)) {
-		s_var("PWD", strdup(path));
+		s_var("PWD", strdup(path), true);
 		return 0;
 	} else {
 		perror("chdir: ");

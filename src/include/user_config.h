@@ -8,5 +8,6 @@
 #define HOME_LOCATION "/home" // should not be changed on most systems unless your home is elsewhere
 #define ROOT_HOME_LOCATION "/root" // same as HOME_LOCATION, but for root(uid 0)
 #define DUMP_DEBUG_INFO // dumps debug info at the start of main
+#define VERBOSE_ERRORS // forces no silent errors
 
 #endif

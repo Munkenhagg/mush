@@ -1,7 +1,7 @@
 CC = gcc
 LD = ld
 STRIP = strip
-CFLAGS = -O2 -march=native -Wall -Wextra -Wmaybe-uninitialized -Winit-self -Wpedantic -Wshadow -Wformat=2 -Wformat-security -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wconversion -Wsign-conversion -Wundef -Werror=shadow -Werror=format-security -fno-omit-frame-pointer -Wcast-qual -Wlogical-op -Wduplicated-cond -Wduplicated-branches -Wstrict-overflow=3 -Warray-bounds -Wstringop-overflow -Wnull-dereference -Wwrite-strings -Wold-style-definition -Wredundant-decls -Wnested-externs -Winline -Wdisabled-optimization -Wfloat-equal -Wswitch-default -Wswitch-enum -Wparentheses -Wsequence-point -Wbad-function-cast -Wpointer-arith -Wtype-limits -Wunreachable-code -g
+CFLAGS = -O2 -march=native -Wall -Wextra -Wmaybe-uninitialized -Winit-self -Wpedantic -Wshadow -Wformat=2 -Wformat-security -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wconversion -Wsign-conversion -Wundef -Werror=shadow -Werror=format-security -fno-omit-frame-pointer -Wcast-qual -Wlogical-op -Wduplicated-cond -Wduplicated-branches -Wstrict-overflow=3 -Warray-bounds -Wstringop-overflow -Wnull-dereference -Wwrite-strings -Wold-style-definition -Wredundant-decls -Wnested-externs -Winline -Wdisabled-optimization -Wfloat-equal -Wswitch-default -Wswitch-enum -Wparentheses -Wsequence-point -Wbad-function-cast -Wpointer-arith -Wtype-limits -Wunreachable-code
 INCLUDE = -Iinclude
 OBJCFLAGS = -c
 ARCH = x86_64

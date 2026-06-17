@@ -43,13 +43,13 @@ int main(int argc, char *argv[]) {
 		#endif
 	}
 	char *user = strdup(user_pw->pw_name);
-	s_var("USER", user);
 	struct sigaction saction;
 	memset(&saction, 0, sizeof(saction));
 	saction.sa_handler = exit_iact_sh;
 	sigemptyset(&saction.sa_mask);
 	saction.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &saction, NULL);
+	s_var("USER", user, true);
 	#ifdef DUMP_DEBUG_INFO
 		printf("global C user: %s\nglobal shell user: %s\nglobal C UID: %d\n", user, g_var("USER"), uid);
 	#endif

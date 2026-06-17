@@ -22,6 +22,7 @@ typedef struct {
 typedef struct {
 	char name[MAX_VAR_NAME_SZ];
 	char val[MAX_VAR_VAL_SZ];
+	bool readonly;
 } Var;
 
 typedef struct {
@@ -89,7 +90,7 @@ extern int func_c;
 extern bool interactive;
 
 int main(int argc, char *argv[]);
-void s_var(const char *varname, const char *varval);
+void s_var(const char *varname, const char *varval, bool readonly);
 const char *g_var(const char *find_name);
 int iactive_shell(void);
 int exec_cmd(char **cmd);
