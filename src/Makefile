@@ -15,8 +15,6 @@ BUILTINS := chdir/change_d exec/exec extern/extern_cmd exit/exit_iact_sh source/
 MISC := strjoin
 ALL_OBJS_TMP := $(addprefix build/,$(MEM)) $(addprefix build/,$(SH)) $(addprefix build/,$(notdir $(BUILTINS))) $(addprefix build/,$(MISC))
 ALL_OBJS := $(addsuffix .o, $(ALL_OBJS_TMP))
-
-# ALL_OBJS = build/setalias.o build/getalias.o build/setvar.o build/getvar.o build/exec_cmd.o build/interactive_sh.o build/exec.o build/default_vars.o build/extern_cmd.o build/change_d.o build/exit_iact_sh.o build/getbuiltin.o build/tokenizer.o build/strjoin.o build/source.o build/log_hist.o build/pwd.o
 ALL_OUTS = $(OUT)/mush $(OUT)/mush.unstripped
 ALL_SF = $(MEM) $(SH) $(BUILTINS) $(MISC)
 
