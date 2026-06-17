@@ -106,5 +106,6 @@ int extern_cmd(char *cmd[]);
 char *strjoin(char *stringa, char *stringb);
 int source(char *path);
 int log_hist(char *untok_logbuf);
+void mush_pwd(void);
 
 #endif

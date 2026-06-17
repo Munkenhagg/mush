@@ -28,6 +28,7 @@ builtin_t builtins[] = {
 	{"exit", (builtin_fn_t)exit_iact_sh},
 	{"source", (builtin_fn_t)source},
 	{".", (builtin_fn_t)source},
+	{"pwd", (builtin_fn_t)mush_pwd},
 	{NULL, NULL}
 };
 

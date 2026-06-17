@@ -11,9 +11,9 @@ OUT = arch/$(ARCH)/out
 MEM := setvar getvar setalias getalias
 SH := exec_cmd interactive_sh default_vars tokenizer getbuiltin log_hist
 DIRS := $(BUILD) $(OUT)
-BUILTINS := chdir/change_d exec/exec extern/extern_cmd exit/exit_iact_sh source/source
+BUILTINS := chdir/change_d exec/exec extern/extern_cmd exit/exit_iact_sh source/source pwd/pwd
 MISC := strjoin
-ALL_OBJS = build/setalias.o build/getalias.o build/setvar.o build/getvar.o build/exec_cmd.o build/interactive_sh.o build/exec.o build/default_vars.o build/extern_cmd.o build/change_d.o build/exit_iact_sh.o build/getbuiltin.o build/tokenizer.o build/strjoin.o build/source.o build/log_hist.o
+ALL_OBJS = build/setalias.o build/getalias.o build/setvar.o build/getvar.o build/exec_cmd.o build/interactive_sh.o build/exec.o build/default_vars.o build/extern_cmd.o build/change_d.o build/exit_iact_sh.o build/getbuiltin.o build/tokenizer.o build/strjoin.o build/source.o build/log_hist.o build/pwd.o
 ALL_OUTS = $(OUT)/mush $(OUT)/mush.unstripped
 ALL_SF = $(MEM) $(SH) $(BUILTINS) $(MISC)
 
