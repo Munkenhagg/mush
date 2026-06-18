@@ -75,8 +75,61 @@ int main(int argc, char *argv[]) {
 			printf("Fork by: %s" RELEASE_FORK_CREATOR);
 		#endif
 	}
-	return 0;
+	#ifdef CONFIG_PRINT_COMPILED_CONFIG
+		if (strcmp(argv[1], "-C") == 0 || strcmp(argv[1], "--print-compiled-config") == 0) {
+			printf("DUMP_DEBUG_INFO: ");
+			#ifdef DUMP_DEBUG_INFO
+				printf("yes\n");
+			#else
+				printf("no\n");
+			#endif
+			printf("STRICT_MODE: ");
+			#ifdef STRICT_MODE
+				printf("yes\n");
+			#else
+				printf("no\n");
+			#endif
+			printf("VERBOSE_ERRORS: ");
+			#ifdef VERBOSE_ERRORS
+				printf("yes\n");
+			#else
+				printf("no\n");
+			#endif
+			printf("ALWAYS_ECHO_COMMANDS: ");
+			#ifdef ALWAYS_ECHO_COMMANDS
+				printf("yes\n");
+			#else
+				printf("no\n");
+			#endif
+			printf("CONFIG_PRINT_COMPILED_CONFIG: ");
+			#ifdef CONFIG_PRINT_COMPILED_CONFIG
+				printf("yes\n");
+			#else
+				printf("no\n");
+			#endif
+			printf("MUSH_EXITED_MSG: \"%s\"\n", MUSH_EXIT_MSG);
+			printf("HISTORY_F: \"%s\"\n", HISTORY_F);
+			printf("HOME_LOCATION: \"%s\"\n", HOME_LOCATION);
+			printf("ROOT_HOME_LOCATION: \"%s\"\n", ROOT_HOME_LOCATION);
+			printf("MAX_G_ALIASES: %d\n", MAX_G_ALIASES);
+			printf("MAX_G_VARS: %d\n", MAX_G_VARS);
+			printf("MAX_FUNCTIONS: %d\n", MAX_FUNCTIONS);
+			printf("MAX_VAR_VAL_SZ: %d\n", MAX_VAR_VAL_SZ);
+			printf("MAX_VAR_NAME_SZ: %d\n", MAX_VAR_NAME_SZ);
+			printf("MAX_FUNCTION_LINES_SZ\n", MAX_FUNCTION_LINES_SZ);
+			printf("MAX_CMD_SZ: %d\n", MAX_CMD_SZ);
+			printf("MAX_PATH_SZ: %d\n", MAX_PATH_SZ);
+			printf("MAX_SHELL_PATHS: %d\n", MAX_SHELL_PATHS);
+			printf("MAX_SINGLE_ARG_SZ: %d\n", MAX_SINGLE_ARG_SZ);
+		}
+	#endif
+
 	if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
-		printf("mush help:\n\t-c: executes a command\n\t-h, --help: prints this help message\n\nmush is a shell made for linux");
+		printf("mush help:\n\t-c: executes a command\n\t-h, --help: prints this help message\n");
+		#ifdef CONFIG_PRINT_COMPILED_CONFIG
+			printf("-C|--print-compiled-config: prints the core configuration mush was compiled with\n");
+		#endif
+		printf("\nMush is a shell made for linux");
 	}
+	return 0;
 }

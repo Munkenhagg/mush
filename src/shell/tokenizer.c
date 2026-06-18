@@ -7,26 +7,59 @@
 
 char **tokenize(char *cmdinput, char **cmdoutput) {
 	tok_state_t tok_state = NORMAL;
-	tok_flags_t tok_flags = NONE;
+	tok_flags_t tok_flags;
 	int curarrnum = 0;
 	bool last_was_space = false;
 	for (int i = 0; cmdinput[i] != '\0'; i++) {
 		char *arrapp = NULL;
+		char stri[2] = {cmdinput[i], '\0'};
 		switch (tok_state) {
 			case NORMAL: {
-				if (cmdinput[i] == ' ') {
-					if (!last_was_space) {
-						curarrnum++;
-						last_was_space = true;
+				switch(cmdinput[i]) {
+					case ' ': {
+						if (!last_was_space) {
+							curarrnum++;
+							last_was_space = true;
+						}
+						break;
 					}
-					break;
+					case '\"': {
+						tok_state = DOUBLE_QUOTE;
+						break;
+					}
+					case '\'': {
+						tok_state = SINGLE_QUOTE;
+						break;
+					}
+					case '$': {
+						tok_flags |= VARIABLE;
+						break;
+					}
+					default: {
+						last_was_space = false;
+					}
 				}
-				char stri[2] = {cmdinput[i], '\0'};
 				if (i != 0) {
 					arrapp = strjoin(cmdoutput[curarrnum],stri);
 				} else {
-					arrapp = stri;
+					arrapp = strdup(stri);
 				}
+				cmdoutput[curarrnum] = arrapp;
+				break;
+			}
+			case DOUBLE_QUOTE: {
+				switch(cmdinput[i]) {
+					case '$': {
+						tok_flags |= VARIABLE;
+						break;
+					}
+					case '\"': {
+						tok_state = NORMAL;
+						break;
+					}
+					default:
+				}
+				arrapp = strjoin(cmdoutput[curarrnum],stri);
 				cmdoutput[curarrnum] = arrapp;
 				break;
 			}

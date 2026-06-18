@@ -9,5 +9,6 @@
 #define ROOT_HOME_LOCATION "/root" // same as HOME_LOCATION, but for root(uid 0)
 #define DUMP_DEBUG_INFO // dumps debug info at the start of main
 #define VERBOSE_ERRORS // forces no silent errors
+#define CONFIG_PRINT_COMPILED_CONFIG // adds -C / --print-compiled-config option
 
 #endif

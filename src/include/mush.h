@@ -14,6 +14,15 @@
 #define MAX_CMD_SZ 2048
 #define MAX_PATH_SZ 2048
 
+#define MAX_SHELL_PATHS 24
+#define MAX_SINGLE_ARG_SZ 512
+
+// strip (usually only for glibc)
+
+// stddef
+#define __need_size_t // size_t
+#define __need_NULL // NULL
+
 typedef struct {
 	char keyw[MAX_VAR_NAME_SZ];
 	char eq[MAX_VAR_VAL_SZ];
@@ -36,11 +45,6 @@ typedef enum cmd_kind_e {
 	CMD_EXTERNAL,
 	CMD_NOT_FOUND
 } cmd_kind_t;
-
-typedef struct exec_target_s {
-	char *path;
-	cmd_kind_t type;
-} exec_target_t;
 
 typedef int (*builtin_fn_t)(void *);
 
@@ -67,6 +71,11 @@ typedef enum tok_flags_e {
 	ESCAPE = 1 << 0,
 	VARIABLE = 1 << 1
 } tok_flags_t;
+
+typedef enum cmd_reason_e {
+	CMD_N_F,
+	CMD_N_EXE
+} cmd_reason_t;
 
 /*
 typedef struct {
@@ -108,5 +117,9 @@ char *strjoin(char *stringa, char *stringb);
 int source(char *path);
 int log_hist(char *untok_logbuf);
 void mush_pwd(void);
+char *proc_path(const char *path, const char *cmd);
+void cmd_not_found_handle(const char *cmd, const cmd_reason_t reason);
+char **vars2envp(Var *vars, size_t count);
+void fr_envp(char **envp);
 
 #endif

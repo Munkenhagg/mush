@@ -1,7 +1,7 @@
 #ifndef RELEASE_INFO_H
 #define RELEASE_INFO_H
 
-#define RELEASE_VERSION "0.0.4"
+#define RELEASE_VERSION "0.0.5"
 #define RELEASE_BRANCH "nightly"
 #define RELEASE_MAIN_HOST_SITE "github.com/Munkenhagg/mush"
 

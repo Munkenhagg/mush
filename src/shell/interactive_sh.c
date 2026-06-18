@@ -5,12 +5,13 @@
 #include <stddef.h>
 
 int iactive_shell(void) {
-	char cmdbuf[MAX_CMD_SZ];
 	while (interactive) {
+		char cmdbuf[MAX_CMD_SZ];
 		const char *PS1 = g_var("PS1");
 		const char *PS2 = g_var("PS2");
 		const char *PS3 = g_var("PS3");
 		const char *PS4 = g_var("PS4");
+		const char *path = g_var("PATH");
 		if (PS1 == NULL) {
 			PS1 = "mush $ ";
 		}
@@ -33,9 +34,15 @@ int iactive_shell(void) {
 			continue;
 		}
 		cmdbuf[strcspn(cmdbuf, "\n")] = 0;
-		char *tokbuf[512];
+		char *tokbuf[MAX_SINGLE_ARG_SZ];
 		tokenize(cmdbuf, tokbuf);
-		log_hist(cmdbuf);
+		char *proc_cmdbuf = proc_path(path, tokbuf[0]);
+		tokbuf[0] = proc_cmdbuf;
+		#ifdef LIGHT_HISTORY
+			log_hist(tokbuf[0]);
+		#else
+			log_hist(cmdbuf);
+		#endif
 		exec_cmd(tokbuf);
 	}
 	return 0;

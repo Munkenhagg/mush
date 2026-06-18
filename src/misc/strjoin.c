@@ -6,7 +6,7 @@
 char *strjoin(char *stringa, char *stringb) {
 	char *strings[] = {stringa,stringb};
 	size_t total = 1;
-	for (int i = 0; strings[i]; i++) {
+	for (int i = 0; i < 2; i++) {
 		total += strlen(strings[i]);
 	}
 	char *combined_string = malloc(total);
@@ -14,7 +14,7 @@ char *strjoin(char *stringa, char *stringb) {
 		return NULL;
 	}
 	char *p = combined_string;
-	for (int i = 0; strings[i]; i++) {
+	for (int i = 0; i < 2; i++) {
 		strcpy(p, strings[i]);
 		p += strlen(strings[i]);
 	}
