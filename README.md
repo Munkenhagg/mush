@@ -14,6 +14,8 @@ While it doesnt yet have all features you would expect from a shell and it is no
 
 ## Compiling from source
 
-- to compile mush from source you can use the Makefile. the makefile will generate arch/ARCH/out/mush.unstripped
+- to compile mush from source you can use the Makefile. the makefile will generate arch/$ARCH/out/mush.unstripped
 
+## Configuration
 
+- before compiling from source, if you want to edit the configuration, you can either edit `src/include/user_config.h`, or for more specific definitions like max path sizes you can edit `include/mush.h`
